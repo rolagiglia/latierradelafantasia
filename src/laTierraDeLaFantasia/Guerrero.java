@@ -1,4 +1,4 @@
-
+package laTierraDeLaFantasia;
 public abstract class Guerrero{
 	
 	int salud;
