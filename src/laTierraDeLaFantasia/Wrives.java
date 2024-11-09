@@ -1,4 +1,4 @@
-
+package laTierraDeLaFantasia;
 public class Wrives extends Guerrero{
 	int contadorAtaques = 0;
 	int ataqueRecivido = 0;
