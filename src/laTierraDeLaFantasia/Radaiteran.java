@@ -1,4 +1,4 @@
-
+package laTierraDeLaFantasia;
 public class Radaiteran extends Guerrero{
 	int cantAtaques = 0;
 	public Radaiteran(int salud, String arma, int rangoMin, int rangoMax, int daño) {
