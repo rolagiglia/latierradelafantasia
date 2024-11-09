@@ -1,4 +1,4 @@
-
+package laTierraDeLaFantasia;
 public class Reralopes extends Guerrero{
 	int fallos = 0;
 	int ataquePotenciado = 0;
