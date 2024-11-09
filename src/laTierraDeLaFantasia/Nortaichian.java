@@ -1,4 +1,4 @@
-
+package laTierraDeLaFantasia;
 public class Nortaichian extends Guerrero{
 
     int enfurecido = 0;
