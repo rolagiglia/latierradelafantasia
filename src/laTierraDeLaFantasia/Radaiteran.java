@@ -6,7 +6,7 @@ public class Radaiteran extends Guerrero{
 	}
 
 	@Override
-	public void atacar(Guerrero contrincante) {
+	public void atacar(Combatible contrincante) {
 		contrincante.recibirAtaque(daño+(3*cantAtaques));
 		cantAtaques++;
 	}

@@ -1,5 +1,5 @@
 package laTierraDeLaFantasia;
-public abstract class Guerrero{
+public abstract class Guerrero implements Combatible{
 	
 	String raza;
 	int saludMaxima;
@@ -21,6 +21,10 @@ public abstract class Guerrero{
 	
 	public String getRaza() {
 		return raza;
+	}	
+	
+	public int getSaludMaxima() {
+		return saludMaxima;
 	}	
 	
 	public int getSalud() {
@@ -47,7 +51,7 @@ public abstract class Guerrero{
 		return salud > 0;
 	}
 	
-	public abstract void atacar(Guerrero contrincante);//abstract por ser la clase base que no se instancia
+	public abstract void atacar(Combatible contrincante);//abstract por ser la clase base que no se instancia
 	
 	public abstract void descansar();
 	

@@ -7,7 +7,7 @@ public class Wrives extends Guerrero{
 	}
 
 	@Override
-	public void atacar(Guerrero contrincante) {
+	public void atacar(Combatible contrincante) {
 		if(ataqueRecibido == 0) {
 			contrincante.recibirAtaque(0);
 		}

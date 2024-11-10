@@ -8,7 +8,7 @@ public class Nortaichian extends Guerrero{
 	}
 
 	@Override
-	public void atacar(Guerrero contrincante) {
+	public void atacar(Combatible contrincante) {
 		if(turnosPiedra != 0) {
 			turnosPiedra--;
 			contrincante.recibirAtaque(0);

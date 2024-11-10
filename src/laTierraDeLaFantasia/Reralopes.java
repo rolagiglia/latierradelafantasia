@@ -7,7 +7,7 @@ public class Reralopes extends Guerrero{
 	}
 
 	@Override
-	public void atacar(Guerrero contrincante) {
+	public void atacar(Combatible contrincante) {
 		
 		if(fallos%2 == 0) {
 			fallos++;

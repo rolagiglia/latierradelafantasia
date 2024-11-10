@@ -23,9 +23,9 @@ public class CampoDeBatalla{
 			
 			aliado.moverHerido();
 			
-			return 1;//gano aliados
+			return 1;//ganaron los aliados
 		}
 		
-		return 0;// gano enemigos
+		return 0;// ganaron los enemigos
 	}
 }
