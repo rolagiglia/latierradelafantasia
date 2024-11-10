@@ -3,14 +3,14 @@ public class Wrives extends Guerrero{
 	int contadorAtaques = 0;
 	int ataqueRecivido = 0;
 	int saludMax = 108;
-	public Wrives(int salud, String arma, int rangoMin, int rangoMax, int daño) {
-		super(108, "magia", 14, 28, 113);
+	public Wrives() {
+		super("Wrives",108, "magia", 14, 28, 113);
 	}
 
 	@Override
 	public void atacar(Guerrero contrincante) {
 		if(ataqueRecivido == 0) {
-			return;
+			contrincante.recibirAtaque(0);
 		}
 		
 		if(contadorAtaques == 2) {

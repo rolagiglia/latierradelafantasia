@@ -3,13 +3,14 @@ package laTierraDeLaFantasia;
 public class Pueblo {
     private int id;
     private int habitantes;
-    private String raza;
+    private Raza raza;
+    
     private TipoPueblo tipo; // enum: propio, aliado, enemigo
 
-    public Pueblo(int id, int habitantes, String raza, TipoPueblo tipo) {
+    public Pueblo(int id, int habitantes, Raza raza, TipoPueblo tipo) {
         this.id = id;
         this.habitantes = habitantes;
-        this.raza = raza;
+        this.raza = raza;        
         this.tipo = tipo;
     }
 
@@ -17,11 +18,12 @@ public class Pueblo {
         return id;
     }
 
+    
     public int getHabitantes() {
         return habitantes;
     }
 
-    public String getRaza() {
+    public Raza getRaza() {
         return raza;
     }
 

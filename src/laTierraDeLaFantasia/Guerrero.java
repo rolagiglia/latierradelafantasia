@@ -1,13 +1,15 @@
 package laTierraDeLaFantasia;
 public abstract class Guerrero{
 	
+	String nombre;
 	int salud;
 	String arma;
 	int rangoMin;
 	int rangoMax;
 	int daño;
 	
-	public Guerrero(int salud,String arma,int rangoMin,int rangoMax, int daño) {
+	public Guerrero(String nombre,int salud,String arma,int rangoMin,int rangoMax, int daño) {
+		this.nombre = nombre;
 		this.salud = salud;
 		this.rangoMin = rangoMin;
 		this.rangoMax = rangoMax;

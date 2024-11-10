@@ -4,47 +4,75 @@ import java.util.List;
 
 public class Ejercito {
 
-	private List<Guerrero> unidades = new ArrayList<>();
+	private List<Guerrero> unidades;
 
-    public void agregarGuerrero(Guerrero guerrero) {
-    	unidades.add(guerrero);
+	public Ejercito(int cantidad, Raza raza) {
+		this.unidades = new ArrayList<>();	
+		
+		for(int i=0; i<=cantidad;i++)
+			agregarGuerreroPorRaza(raza);
+	}
+	
+	public void agregarGuerreroPorRaza(Raza raza) {
+        switch (raza) {
+            case wrives:
+                this.unidades.add(new Wrives());
+                break;
+            case reralopes:
+                this.unidades.add(new Reralopes());
+                break;
+            case radaiteran:
+                this.unidades.add(new Radaiteran());
+                break;
+            case nortaichian:
+                this.unidades.add(new Nortaichian());
+                break;
+            default:
+                System.out.println("Raza desconocida: " + raza);
+        }
     }
+	
+    
 
-	public void atacar(Guerrero contrincante) {
-		if(unidades.get(0).estaVivo()) {
-			unidades.get(0).atacar(contrincante);;
-			return;	
-		}	
+	public void atacar(Ejercito contrincante) {
+		if(unidades.isEmpty() || contrincante.unidades.isEmpty()) {
+			Guerrero atacante = unidades.get(0);
+			Guerrero defensor = contrincante.unidades.get(0);
+			
+			atacante.atacar(defensor);
+			
+			if(!defensor.estaVivo()) {
+				contrincante.sacarGuerreroMuerto();
+			}
+		}
 	}
 
 	public void descansar() {
 		for(Guerrero unidad: unidades) {
-			if(unidad.estaVivo()) {
-				unidad.descansar();;
-			}
-			else{
-				return;
-			}
-		}
-			
+				unidad.descansar();
+		}			
 	}
 
-	public void sacarGuerreroDesmayado() {
+	public void sacarGuerreroMuerto() {
 		if(!unidades.get(0).estaVivo()) {
 			unidades.remove(0);
 		}
-
+	}
+	
+	public int obtenerCantGuerreros() {
+		return unidades.size();
 	}
 	
 	public void recibirAtaque(int daño) {
 			if(unidades.get(0).estaVivo()) {
 				unidades.get(0).recibirAtaque(daño);
-				return;	
 		}		
 	}
 	
-	//habria que crear otra para ponerla a lo ultimo de los sobrevivientes
-	
+	 public boolean estaVivo() {
+	        return !unidades.isEmpty();
+	    }
+		
 	public void moverHerido() {
 		
 		if(!unidades.get(0).estaVivo()) {//en compejidad diria que es O(1) porque toma directamente el primer elemento 
@@ -52,7 +80,6 @@ public class Ejercito {
 			unidades.add(unidad);
 		}
 	}
-    
     
 }
 

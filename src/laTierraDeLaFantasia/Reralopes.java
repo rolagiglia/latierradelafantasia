@@ -2,8 +2,8 @@ package laTierraDeLaFantasia;
 public class Reralopes extends Guerrero{
 	int fallos = 0;
 	int ataquePotenciado = 0;
-	public Reralopes(int salud, String arma, int rangoMin, int rangoMax, int daño) {
-		super(53,"catapulta", 5, 46, 27);
+	public Reralopes() {
+		super("Reralopes",53,"catapulta", 5, 46, 27);
 	}
 
 	@Override
@@ -11,6 +11,8 @@ public class Reralopes extends Guerrero{
 		
 		if(fallos%2 == 0) {
 			fallos++;
+			contrincante.recibirAtaque(0);
+
 		}
 		else if(ataquePotenciado > 0){
 			ataquePotenciado--;

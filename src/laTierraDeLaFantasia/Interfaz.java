@@ -55,7 +55,7 @@ public class Interfaz {
 		try {
 		leerArchivo.cargarDatosMapa(rutaArchivo);
 		
-		System.out.println("Archivo cargado exitosamente.\\n");
+		System.out.println("Archivo cargado exitosamente.");
 		
 		}catch(Exception E) {
 			System.out.println("\n"+E.getMessage()+"\n");
@@ -79,11 +79,15 @@ public class Interfaz {
 	private void verificarFactibilidad() {
 		
 		if(Mapa.obtenerInstancia().getCaminoMenorCosto()!=null) {
-			System.out.println("Camino: ");
-			for(int[] n:Mapa.obtenerInstancia().getCaminoMenorCosto())
-				System.out.println(" "+ n[0] + " "+ n[1]);
-			System.out.println("Costo total: " + Mapa.obtenerInstancia().getCostoMinimoTotal() + 
-								" Tiempo: " + Mapa.obtenerInstancia().getCostoMinimoTotal()/10 + " dias " + (Mapa.obtenerInstancia().getCostoMinimoTotal()%10)*2.4 + " horas ");
+			System.out.println("Existe un camino, realizando cruzada....");
+			Cruzada cruzada =  new Cruzada();
+			if(cruzada.cruzada()!=0)
+				System.out.println("EXITO. \n"
+						+ " Cantidad de guerreros que llegaron: " + cruzada.getCantidadGuerrerosRestantes() + 
+						" Tiempo total: " + (Mapa.obtenerInstancia().getCostoMinimoTotal()+ cruzada.getTiempoTotal())/10 + " dias " + (Mapa.obtenerInstancia().getCostoMinimoTotal()%10)*2.4 + " horas ");
+			else
+				System.out.println("NO ES FACTIBLE");
+			
 		}
 		else 
 			System.out.println("No hay camino");

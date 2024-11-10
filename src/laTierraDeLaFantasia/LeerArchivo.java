@@ -64,9 +64,10 @@ public class LeerArchivo {
         String raza = partes[2];
         String tipo = partes[3]; // propio, aliado o enemigo
 
-        Pueblo pueblo = new Pueblo(id, habitantes, raza, TipoPueblo.valueOf(tipo.toLowerCase()));
+        Pueblo pueblo = new Pueblo(id, habitantes, Raza.valueOf(raza.toLowerCase()), TipoPueblo.valueOf(tipo.toLowerCase()));
         Mapa.obtenerInstancia().agregarPueblo(pueblo);
     }
+    
 
     // Método para procesar la línea que indica el pueblo inicial y final
     private void procesarInicioFin(String lineaInicioFin) {

@@ -90,11 +90,13 @@ public class Mapa {
 	}
 	
 	public ArrayList<int[]> calculaCaminoMasCorto() {//devuelve lista de pueblos a visitar por el camino mas corto
+		
 		int[]costosMin = new int[this.matrizAdyacencias.length];  
 		int[]pred = new int[this.matrizAdyacencias.length];  
 		int anterior=-1;
 		Dijkstra dijkstra= new Dijkstra();
 		dijkstra.algoritmoDijkstra(this.matrizAdyacencias, this.puebloInicial, costosMin, pred);
+		
 		caminoMenorCosto = new ArrayList<>();
 		
 		if(costosMin[puebloFinal]!=Integer.MAX_VALUE) {
@@ -108,16 +110,6 @@ public class Mapa {
 			return caminoMenorCosto;
 		}
 		return null; //no hay camino
-		/*
-		System.out.println("Costos: ");
-		for(int i=1;i<costosMin.length;i++) 
-			System.out.print(" " + costosMin[i]);
-		System.out.println("");
-		System.out.println("Predecesores: ");
-		for(int i=1;i<pred.length;i++) 
-			System.out.print(" " + pred[i]);
-		System.out.println("");
-		*/
 		
 	
 	}

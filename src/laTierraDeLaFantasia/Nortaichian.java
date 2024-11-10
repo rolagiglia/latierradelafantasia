@@ -4,15 +4,15 @@ public class Nortaichian extends Guerrero{
     int enfurecido = 0;
 	int turnosPiedra=0;
 	int saludMax = 66;
-	public Nortaichian(int salud, String arma, int rangoMin, int rangoMax, int daño) {
-		super(66, "arco", 16, 22, 18);
+	public Nortaichian() {
+		super("Nortaichian",66, "arco", 16, 22, 18);
 	}
 
 	@Override
 	public void atacar(Guerrero contrincante) {
 		if(turnosPiedra != 0) {
 			turnosPiedra--;
-			return;
+			contrincante.recibirAtaque(0);
 		}
 			
 		if(enfurecido > 0) {
@@ -38,7 +38,6 @@ public class Nortaichian extends Guerrero{
 
 	@Override
 	public void recibirAtaque(int daño) {
-	
 		this.salud -= daño;
 		enfurecido = 2;
 	}
