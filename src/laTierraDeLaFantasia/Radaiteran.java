@@ -12,17 +12,12 @@ public class Radaiteran extends Guerrero{
 	}
 
 	@Override
-	public void descansar() {
-		// TODO Auto-generated method stub
-	}
+	public void descansar() {}
 
 	@Override
 	public void recibirAtaque(int daño) {
 		this.salud -= daño;
 	}
-
-	
-	
 }
 
 

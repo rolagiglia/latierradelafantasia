@@ -8,6 +8,7 @@ public class Pueblo {
     private TipoPueblo tipo; // enum: propio, aliado, enemigo
 
     public Pueblo(int id, int habitantes, Raza raza, TipoPueblo tipo) {
+        if(habitantes < 0) throw new IllegalArgumentException("El número de habitantes no puede ser negativo");
         this.id = id;
         this.habitantes = habitantes;
         this.raza = raza;        

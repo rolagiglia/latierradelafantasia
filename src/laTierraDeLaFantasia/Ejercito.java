@@ -13,7 +13,12 @@ public class Ejercito {
 			agregarGuerreroPorRaza(raza);
 	}
 	
-	public void agregarGuerreroPorRaza(Raza raza) {
+	public void agregarGuerreros(int cantidad, Raza raza) {
+		for(int i=0; i<cantidad; i++)
+			agregarGuerreroPorRaza(raza);
+	}
+	
+	private void agregarGuerreroPorRaza(Raza raza) {
         switch (raza) {
             case wrives:
                 this.unidades.add(new Wrives());
@@ -35,7 +40,7 @@ public class Ejercito {
     
 
 	public void atacar(Ejercito contrincante) {
-		if(unidades.isEmpty() || contrincante.unidades.isEmpty()) {
+		if(!unidades.isEmpty() && !contrincante.unidades.isEmpty()) {
 			Guerrero atacante = unidades.get(0);
 			Guerrero defensor = contrincante.unidades.get(0);
 			

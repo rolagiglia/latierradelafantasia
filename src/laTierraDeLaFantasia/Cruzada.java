@@ -11,9 +11,10 @@ public class Cruzada {
 	public int getTiempoTotal() {
 		return tiempoTotal;
 	}
+	
 	public int cruzada() {
 		
-	tiempoTotal=0; //tiempo en recorrer camino
+	tiempoTotal = 0;
 	
 	Ejercito ejercitoAliado = new Ejercito(
 		Mapa.obtenerInstancia().obtenerPueblo(Mapa.obtenerInstancia().getPuebloInicial()).getHabitantes(), 
@@ -21,13 +22,13 @@ public class Cruzada {
 		
 	for(int[] puebloAVisitar:Mapa.obtenerInstancia().getCaminoMenorCosto())
 	{		
+		//tiempoTotal += 
 		if(Mapa.obtenerInstancia().obtenerPueblo(puebloAVisitar[0]).getTipo()==TipoPueblo.aliado)
 		{		
 			ejercitoAliado.descansar();
 			tiempoTotal+=1;
-						
-			for(int i=0;i<Mapa.obtenerInstancia().obtenerPueblo(puebloAVisitar[0]).getHabitantes()/2;i++)  //agregar la mitad de aliados
-				ejercitoAliado.agregarGuerreroPorRaza(Mapa.obtenerInstancia().obtenerPueblo(puebloAVisitar[0]).getRaza());				
+			
+			ejercitoAliado.agregarGuerreros(Mapa.obtenerInstancia().obtenerPueblo(puebloAVisitar[0]).getHabitantes()/2, Mapa.obtenerInstancia().obtenerPueblo(puebloAVisitar[0]).getRaza());
 		}
 		else {
 			Ejercito ejercitoEnemigo = new Ejercito(

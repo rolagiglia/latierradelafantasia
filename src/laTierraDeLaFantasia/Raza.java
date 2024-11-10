@@ -1,7 +1,7 @@
 package laTierraDeLaFantasia;
 
 public enum Raza {
-	reralopes, nortaichian, radaiteran,wrives
-	}
+	reralopes, nortaichian, radaiteran, wrives
+}
 
 

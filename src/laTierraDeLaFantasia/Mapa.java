@@ -105,7 +105,7 @@ public class Mapa {
 			do {
 				caminoMenorCosto.add(new int[]{anterior,costosMin[anterior]});
 				anterior=pred[anterior];
-			}while(anterior!=this.puebloInicial);
+			} while(anterior!=this.puebloInicial);
 			Collections.reverse(caminoMenorCosto);//invierto la lista para que el camino quede en el orden correcto
 			return caminoMenorCosto;
 		}

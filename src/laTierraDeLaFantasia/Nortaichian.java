@@ -3,7 +3,6 @@ public class Nortaichian extends Guerrero{
 
     int enfurecido = 0;
 	int turnosPiedra=0;
-	int saludMax = 66;
 	public Nortaichian() {
 		super("Nortaichian",66, "arco", 16, 22, 18);
 	}
@@ -24,14 +23,14 @@ public class Nortaichian extends Guerrero{
 		}
 		
 		this.salud *=0.04;
-		if(this.salud > this.saludMax) {
-			this.salud = this.saludMax;
+		if(this.salud > this.saludMaxima) {
+			this.salud = this.saludMaxima;
 		}
 	}
 
 	@Override
 	public void descansar() {
-		this.salud = saludMax;
+		this.salud = saludMaxima;
 		turnosPiedra = 2;
 		enfurecido = 0;
 	}
@@ -41,6 +40,4 @@ public class Nortaichian extends Guerrero{
 		this.salud -= daño;
 		enfurecido = 2;
 	}
-
-
 }
