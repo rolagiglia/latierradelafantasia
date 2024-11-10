@@ -1,26 +1,30 @@
 package laTierraDeLaFantasia;
 public class Reralopes extends Guerrero{
-	int fallos = 0;
-	int ataquePotenciado = 0;
+	private int fallos = 0;
+	private boolean ultimoAtaqueExitoso = false;
+	private int ataquePotenciado = 0;
 	public Reralopes() {
 		super("Reralopes",53,"catapulta", 5, 46, 27);
 	}
-
+	
+	public boolean getUltimoAtaqueExitoso() {
+		return this.ultimoAtaqueExitoso;
+	}
+	
 	@Override
 	public void atacar(Combatible contrincante) {
-		
-		if(fallos%2 == 0) {
-			fallos++;
-			contrincante.recibirAtaque(0);
-
-		}
-		else if(ataquePotenciado > 0){
-			ataquePotenciado--;
-			contrincante.recibirAtaque(daño*2);
-		}
-		else{
-			contrincante.recibirAtaque(daño);
-		}
+	    if (Math.random() < 0.5) { // 50% de probabilidad de errar
+	        ultimoAtaqueExitoso = false;
+	        fallos++;
+	        contrincante.recibirAtaque(0); // No hace daño
+	    } else if (ataquePotenciado > 0) {
+	        ataquePotenciado--;
+	        contrincante.recibirAtaque(daño * 2); // Daño potenciado
+	        ultimoAtaqueExitoso = true;
+	    } else {
+	        contrincante.recibirAtaque(daño); // Daño normal
+	        ultimoAtaqueExitoso = true;
+	    }
 	}
 
 	@Override

@@ -11,18 +11,17 @@ public class Nortaichian extends Guerrero{
 	public void atacar(Combatible contrincante) {
 		if(turnosPiedra != 0) {
 			turnosPiedra--;
-			contrincante.recibirAtaque(0);
 		}
-			
-		if(enfurecido > 0) {
+		else if(enfurecido > 0) {
 			enfurecido--;
 			contrincante.recibirAtaque(daño*2);
+			this.salud *=0.04;
 		}
 		else {
 			contrincante.recibirAtaque(daño);
+			this.salud *=0.04;
 		}
 		
-		this.salud *=0.04;
 		if(this.salud > this.saludMaxima) {
 			this.salud = this.saludMaxima;
 		}
@@ -37,6 +36,9 @@ public class Nortaichian extends Guerrero{
 
 	@Override
 	public void recibirAtaque(int daño) {
+		if(turnosPiedra != 0) {
+			daño /= 2;
+		}
 		this.salud -= daño;
 		enfurecido = 2;
 	}

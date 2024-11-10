@@ -74,6 +74,11 @@ public class Mapa {
 		return this.cantidadPueblos;
 	}
 	
+	public int[][] getMatrizAdyacencias() {
+		// TODO Auto-generated method stub
+		return this.matrizAdyacencias;
+	}	
+	
 	public int getCostoMinimoTotal() {
 		int costoMinimoTotal=0;
 		if(caminoMenorCosto!=null)
