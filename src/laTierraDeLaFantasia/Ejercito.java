@@ -9,7 +9,7 @@ public class Ejercito {
 	public Ejercito(int cantidad, Raza raza) {
 		this.unidades = new ArrayList<>();	
 		
-		for(int i=0; i<=cantidad;i++)
+		for(int i=0; i<cantidad;i++)
 			agregarGuerreroPorRaza(raza);
 	}
 	
