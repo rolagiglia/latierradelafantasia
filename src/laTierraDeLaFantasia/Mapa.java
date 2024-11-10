@@ -51,12 +51,6 @@ public class Mapa {
         	matrizAdyacencias[origen][destino]=distancia;    
     }
 
-    /*
-    public Map<> obtenerCaminos(int idPueblo) {//////////////////
-        for(int i=0;i<cantidadPueblos;i++)
-        	
-    	
-    }*/
 
     public Pueblo obtenerPueblo(int idPueblo) {
         return pueblos.get(idPueblo);
@@ -82,9 +76,8 @@ public class Mapa {
 	public int getCostoMinimoTotal() {
 		int costoMinimoTotal=0;
 		if(caminoMenorCosto!=null)
-			for(int[] n:Mapa.obtenerInstancia().getCaminoMenorCosto())
-				costoMinimoTotal+=n[1];
-		return costoMinimoTotal;
+			costoMinimoTotal=Mapa.obtenerInstancia().getCaminoMenorCosto().get(Mapa.obtenerInstancia().getCaminoMenorCosto().size()-1)[1];
+		return costoMinimoTotal;  //devuelve km
 	}
 	
 	public ArrayList<int[]> getCaminoMenorCosto(){		

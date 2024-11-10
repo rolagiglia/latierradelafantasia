@@ -50,7 +50,7 @@ public class Interfaz {
 		}
 
 		System.out.print("Ingrese la ruta del archivo de mapa: ");
-		String rutaArchivo = "D:\\Codigo86\\Documentos\\GitHub\\latierradelafantasia\\archivo.txt"; //scanner.nextLine();
+		String rutaArchivo = "C:\\Users\\Ivi\\Desktop\\FACU 2024\\PROGRAAVANZADA\\archivo.txt"; //scanner.nextLine();
 		
 		try {
 		leerArchivo.cargarDatosMapa(rutaArchivo);
@@ -84,7 +84,8 @@ public class Interfaz {
 			if(cruzada.cruzada()!=0)
 				System.out.println("EXITO. \n"
 						+ " Cantidad de guerreros que llegaron: " + cruzada.getCantidadGuerrerosRestantes() + 
-						" Tiempo total: " + (Mapa.obtenerInstancia().getCostoMinimoTotal()+ cruzada.getTiempoTotal())/10 + " dias " + (Mapa.obtenerInstancia().getCostoMinimoTotal()%10)*2.4 + " horas ");
+						" Tiempo total: " + (Mapa.obtenerInstancia().getCostoMinimoTotal()/10+ cruzada.getTiempoTotal()) + " dias " + 
+						                    (Mapa.obtenerInstancia().getCostoMinimoTotal()%10)*2.4 + " horas ");
 			else
 				System.out.println("NO ES FACTIBLE");
 			
