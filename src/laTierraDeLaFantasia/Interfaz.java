@@ -50,7 +50,7 @@ public class Interfaz {
 		}
 
 		System.out.print("Ingrese la ruta del archivo de mapa: ");
-		String rutaArchivo = scanner.nextLine();
+		String rutaArchivo = "D:\\Codigo86\\Documentos\\GitHub\\latierradelafantasia\\archivo.txt"; //scanner.nextLine();
 		
 		try {
 		leerArchivo.cargarDatosMapa(rutaArchivo);

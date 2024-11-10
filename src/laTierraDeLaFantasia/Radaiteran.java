@@ -6,23 +6,18 @@ public class Radaiteran extends Guerrero{
 	}
 
 	@Override
-	public void atacar(Guerrero contrincante) {
+	public void atacar(Combatible contrincante) {
 		contrincante.recibirAtaque(daño+(3*cantAtaques));
 		cantAtaques++;
 	}
 
 	@Override
-	public void descansar() {
-		// TODO Auto-generated method stub
-	}
+	public void descansar() {}
 
 	@Override
 	public void recibirAtaque(int daño) {
 		this.salud -= daño;
 	}
-
-	
-	
 }
 
 

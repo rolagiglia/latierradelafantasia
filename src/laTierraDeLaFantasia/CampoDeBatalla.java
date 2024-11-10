@@ -2,12 +2,12 @@ package laTierraDeLaFantasia;
 public class CampoDeBatalla{
 
 	public static int batalla(Ejercito aliado, Ejercito enemigo) {
-		int turno = 1;// 1 para aliados , 2 para enemigos
+		boolean turnoAliado = true;
 		
 		
 		while(aliado.estaVivo() && enemigo.estaVivo()) {
 			
-			if(turno == 1) {
+			if(turnoAliado) {
 				aliado.atacar(enemigo);
 			}
 			else {
@@ -15,17 +15,17 @@ public class CampoDeBatalla{
 			}
 		
 			//cambio turno
-			turno = (turno==1) ? 2 : 1;
+			turnoAliado = !turnoAliado;
 		}
 		
 		
-		if(!enemigo.estaVivo()) {
+		if(aliado.estaVivo()) {
 			
 			aliado.moverHerido();
 			
-			return 1;//gano aliados
+			return 1;//ganaron los aliados
 		}
 		
-		return 0;// gano enemigos
+		return 0;// ganaron los enemigos
 	}
 }
