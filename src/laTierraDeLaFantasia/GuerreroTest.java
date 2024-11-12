@@ -130,6 +130,6 @@ public class GuerreroTest {
         Guerrero radaiteran = new Radaiteran();
         radaiteran.recibirAtaque(20);
         assertEquals(16, radaiteran.getSalud()); // Salud reducida correctamente
-    }
+    }    
 }
 

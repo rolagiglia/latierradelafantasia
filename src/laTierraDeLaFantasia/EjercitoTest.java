@@ -19,13 +19,13 @@ public class EjercitoTest {
     public void testEjercitoCreacion() {
         assertNotNull(ejercitoAliado);
         assertTrue(ejercitoAliado.estaVivo(), "El ejército debe estar vivo al ser creado");
-        assertEquals(5, ejercitoAliado.obtenerCantGuerreros(), "El número de guerreros debe ser 5");
+        assertEquals(5, ejercitoAliado.getCantGuerreros(), "El número de guerreros debe ser 5");
     }
 
     @Test
     public void testAgregarGuerreros() {
         ejercitoAliado.agregarGuerreros(3, Raza.reralopes);
-        assertEquals(8, ejercitoAliado.obtenerCantGuerreros(), "El número de guerreros debe ser 8 después de agregar 3");
+        assertEquals(8, ejercitoAliado.getCantGuerreros(), "El número de guerreros debe ser 8 después de agregar 3");
     }
 
     @Test
@@ -43,7 +43,7 @@ public class EjercitoTest {
     @Test
     public void testEjercitoMuere() {
         // Ataques múltiples para asegurar que el ejército muera
-    	for(int i=ejercitoAliado.obtenerCantGuerreros(); i>0; i--) {
+    	for(int i=ejercitoAliado.getCantGuerreros(); i>0; i--) {
             ejercitoAliado.recibirAtaque(1000);
             ejercitoAliado.sacarGuerreroMuerto();    		
     	}
@@ -56,7 +56,7 @@ public class EjercitoTest {
         // Simulando la muerte de un guerrero
         ejercitoAliado.recibirAtaque(1000);
         ejercitoAliado.sacarGuerreroMuerto();
-        assertEquals(4, ejercitoAliado.obtenerCantGuerreros(), "El número de guerreros debe ser 4 después de eliminar un guerrero muerto");
+        assertEquals(4, ejercitoAliado.getCantGuerreros(), "El número de guerreros debe ser 4 después de eliminar un guerrero muerto");
     }
 
     @Test
@@ -80,7 +80,7 @@ public class EjercitoTest {
     public void testAgregarGuerreroPorRaza() {
         Ejercito nuevoEjercito = new Ejercito(0, Raza.wrives);
         nuevoEjercito.agregarGuerreros(1, Raza.radaiteran);
-        assertEquals(1, nuevoEjercito.obtenerCantGuerreros(), "El número de guerreros debe ser 1 después de agregar un guerrero de raza Radaiteran");
+        assertEquals(1, nuevoEjercito.getCantGuerreros(), "El número de guerreros debe ser 1 después de agregar un guerrero de raza Radaiteran");
     }
 }
 

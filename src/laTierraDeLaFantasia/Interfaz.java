@@ -12,26 +12,30 @@ public class Interfaz {
 		while (!salir) {
 			System.out.println("Opciones:");
 			System.out.println("1. Cargar archivo de mapa");
-			System.out.println("2. Verificar factibilidad del juego");
-			System.out.println("3. Salir");
-			System.out.print("Seleccione una opción: ");
+			System.out.println("2. Mostrar mapa Cargado");
+			System.out.println("3. Ejecutar Mision!");
+			System.out.print("Seleccione una opcion: ");
 			int opcion = scanner.nextInt();
 			scanner.nextLine(); // Consumir la nueva línea
 
 			switch (opcion) {
 			case 1:
 				cargarArchivo(scanner);
+				System.out.println("");
 				break;
 			case 2:
-				verificarFactibilidad();
-				break;
+				mostrarMapa();
+				System.out.println("");
+				break;			
 			case 3:
-				salir = true;
-				System.out.println("Saliendo...");
+				ejecutarMision();
+				System.out.println("");
 				break;
 			default:
-				System.out.println("Opción inválida. Intente nuevamente.");
+				System.out.println("Opcion inválida. Intente nuevamente.");
 			}
+			System.out.println("Presione cualquier tecla para volver al menu...");
+            scanner.nextLine(); 
 		}
 		scanner.close();
 	}
@@ -40,17 +44,17 @@ public class Interfaz {
 	private void cargarArchivo(Scanner scanner) throws Exception {
 		LeerArchivo leerArchivo = new LeerArchivo();
 		if (!mapaEstaVacio()) {
-			System.out.println("Ya existe un archivo de mapa cargado. ¿Desea sobrescribir los datos? (S/N)");
+			System.out.println("Ya existe un mapa cargado. ¿Desea sobrescribir los datos? (S/N)");
 			String respuesta = scanner.nextLine().toUpperCase();
 
 			if (!respuesta.equals("S")) {
-				System.out.println("Operación cancelada. No se sobrescribió el archivo.\\n");
+				System.out.println("Operacion cancelada. No se sobrescribio el mapa.");
 				return;
 			}
 		}
 
 		System.out.print("Ingrese la ruta del archivo de mapa: ");
-		String rutaArchivo = "C:\\Users\\Ivi\\Desktop\\FACU 2024\\PROGRAAVANZADA\\archivo.txt"; //scanner.nextLine();
+		String rutaArchivo = scanner.nextLine();
 		
 		try {
 		leerArchivo.cargarDatosMapa(rutaArchivo);
@@ -61,43 +65,49 @@ public class Interfaz {
 			System.out.println("\n"+E.getMessage()+"\n");
 		}
 		
-		
-		////solo fines demostrativos
-		for(int i=1;i<Mapa.obtenerInstancia().getCantidadPueblos()+1;i++) {
-			if(Mapa.obtenerInstancia().obtenerPueblo(i)!=null) {
-			System.out.println("Pueblo: " + Mapa.obtenerInstancia().obtenerPueblo(i));
-			
-			
+	}
+	
+	private void mostrarMapa() {
+		if(mapaEstaVacio())
+			System.out.println("AUN NO SE HA CARGADO UN ARCHIVO DE MAPA");
+		else
+		{
+			for(int i=1;i<Mapa.getInstancia().getCantidadPueblos()+1;i++) {
+				if(Mapa.getInstancia().getPueblo(i)!=null) 
+					System.out.println("Pueblo: " + Mapa.getInstancia().getPueblo(i));	
 			}
 		}
-		
-		////
-
+		System.out.println("");
 	}
 
-	// Método para verificar la factibilidad del juego
-	private void verificarFactibilidad() {
+	
+	private void ejecutarMision() {
 		
-		if(Mapa.obtenerInstancia().getCaminoMenorCosto()!=null) {
-			System.out.println("Existe un camino, realizando cruzada....");
-			Cruzada cruzada =  new Cruzada();
-			if(cruzada.cruzada()!=0)
-				System.out.println("EXITO. \n"
-						+ " Cantidad de guerreros que llegaron: " + cruzada.getCantidadGuerrerosRestantes() + 
-						" Tiempo total: " + (Mapa.obtenerInstancia().getCostoMinimoTotal()/10+ cruzada.getTiempoTotal()) + " dias " + 
-						                    (Mapa.obtenerInstancia().getCostoMinimoTotal()%10)*2.4 + " horas ");
-			else
-				System.out.println("NO ES FACTIBLE");
-			
+		if(mapaEstaVacio())
+			System.out.println("AUN NO SE HA CARGADO UN ARCHIVO DE MAPA");
+		else
+		{
+			if(Mapa.getInstancia().getCaminoMenorCosto()!=null) {
+				System.out.println("Existe un camino de " + 
+									Mapa.getInstancia().getPuebloInicial() + " a " +
+									Mapa.getInstancia().getPuebloFinal() + "\n, realizando mision....");
+				Cruzada cruzada =  new Cruzada();
+				if(cruzada.cruzada()!=0)
+					System.out.println("MISION EXITOSA. \n"
+							+ "Cantidad de guerreros que llegaron con vida: " + cruzada.getCantidadGuerrerosRestantes() + 
+							"\nTiempo total: " + (Mapa.getInstancia().getCostoMinimoTotal()/10+ cruzada.getTiempoTotal()) + " dias " + 
+							                    (Mapa.getInstancia().getCostoMinimoTotal()%10)*2.4 + " horas ");
+				else
+					System.out.println("LA MISION NO ES FACTIBLE");
+				
+			}
+			else 
+				System.out.println("NO HAY CAMINO");
 		}
-		else 
-			System.out.println("No hay camino");
-		
 	}
 
 	// Método auxiliar para verificar si el mapa ya tiene datos cargados
 	private boolean mapaEstaVacio() {
-		return Mapa.obtenerInstancia().getCantidadPueblos() == 0; // Consideramos que está vacío si no hay pueblos
-																	// cargados
+		return Mapa.getInstancia().getCantidadPueblos() == 0; 																	
 	}
 }

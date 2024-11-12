@@ -9,7 +9,7 @@ public class LeerArchivo {
 
     // Cargar datos en Mapa (Grafo)
     public Mapa cargarDatosMapa(String rutaArchivo) throws Exception {
-        Mapa mapa = Mapa.obtenerInstancia();
+        Mapa mapa = Mapa.getInstancia();
         try (BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo))) {
             
             // Leer la cantidad de pueblos
@@ -65,7 +65,7 @@ public class LeerArchivo {
         String tipo = partes[3]; // propio, aliado o enemigo
 
         Pueblo pueblo = new Pueblo(id, habitantes, Raza.valueOf(raza.toLowerCase()), TipoPueblo.valueOf(tipo.toLowerCase()));
-        Mapa.obtenerInstancia().agregarPueblo(pueblo);
+        Mapa.getInstancia().agregarPueblo(pueblo);
     }
     
 
@@ -75,8 +75,8 @@ public class LeerArchivo {
         int puebloInicial = Integer.parseInt(partes[0]);
         int puebloFinal = Integer.parseInt(partes[1]);
 
-        Mapa.obtenerInstancia().setPuebloInicial(puebloInicial);
-        Mapa.obtenerInstancia().setPuebloFinal(puebloFinal);
+        Mapa.getInstancia().setPuebloInicial(puebloInicial);
+        Mapa.getInstancia().setPuebloFinal(puebloFinal);
     }
 
     // Método para procesar cada línea que contiene la distancia entre dos pueblos
@@ -85,10 +85,8 @@ public class LeerArchivo {
         int origen = Integer.parseInt(partes[0]);
         int destino = Integer.parseInt(partes[1]);
         int distancia = Integer.parseInt(partes[2]);
-        //////////////////////////////////////////////////////////////////////////////////solo demostrativo
-        System.out.println(origen  +  " " + destino + " "+distancia);
         
-        Mapa.obtenerInstancia().agregarCamino(origen, destino, distancia);
+        Mapa.getInstancia().agregarCamino(origen, destino, distancia);
     }
     
     private boolean esNumero(String cadena) {

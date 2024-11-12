@@ -71,11 +71,11 @@ public class Ejercito implements Combatible {
 	    }
 	}
 
-	public int obtenerCantGuerreros() {
+	public int getCantGuerreros() {
 	    int total = 0;
 	    for (Combatible unidad : unidades) {
 	        if (unidad instanceof Ejercito) {
-	            total += ((Ejercito) unidad).obtenerCantGuerreros();
+	            total += ((Ejercito) unidad).getCantGuerreros();
 	        } else {
 	            total += 1;
 	        }

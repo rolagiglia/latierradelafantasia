@@ -4,7 +4,7 @@ public class Reralopes extends Guerrero{
 	private boolean ultimoAtaqueExitoso = false;
 	private int ataquePotenciado = 0;
 	public Reralopes() {
-		super("Reralopes",53,"catapulta", 5, 46, 27);
+		super(Raza.reralopes,53,"catapulta", 5, 46, 27);
 	}
 	
 	public boolean getUltimoAtaqueExitoso() {
@@ -15,7 +15,7 @@ public class Reralopes extends Guerrero{
 	public void atacar(Combatible contrincante) {
 	    if (Math.random() < 0.5) { // 50% de probabilidad de errar
 	        ultimoAtaqueExitoso = false;
-	        fallos++;
+	        setFallos(getFallos() + 1);
 	        contrincante.recibirAtaque(0); // No hace daño
 	    } else if (ataquePotenciado > 0) {
 	        ataquePotenciado--;
@@ -35,7 +35,15 @@ public class Reralopes extends Guerrero{
 	@Override
 	public void recibirAtaque(int daño) {
 		this.salud -= daño;
-		fallos = 0;
+		setFallos(0);
+	}
+
+	public int getFallos() {
+		return fallos;
+	}
+
+	public void setFallos(int fallos) {
+		this.fallos = fallos;
 	}
 
 }

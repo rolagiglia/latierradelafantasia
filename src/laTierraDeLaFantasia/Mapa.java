@@ -9,16 +9,16 @@ public class Mapa {
     private int puebloFinal;
     private Map<Integer,Pueblo> pueblos; // Mapa de nodos Pueblo
     private int[][] matrizAdyacencias; // matriz de adyacencias
-    private ArrayList<int[]> caminoMenorCosto;// lista de pueblos a visitar por el camino mas corto
-    
+    private ArrayList<Integer> caminoMenorCosto;// lista de pueblos a visitar por el camino mas corto
+    private int costoTotal;
     
     private Mapa() {//privado para evitar la creacion de una nueva instancia
         this.pueblos = new HashMap<>();
         
     }
     
-    // Estático para obtener la única instancia de Mapa
-    public static Mapa obtenerInstancia() {
+    // Estático para get la única instancia de Mapa
+    public static Mapa getInstancia() {
         if (mapaUnico == null) {   //sino hay instancia creada 
             mapaUnico = new Mapa();  
         }
@@ -52,7 +52,7 @@ public class Mapa {
     }
 
 
-    public Pueblo obtenerPueblo(int idPueblo) {
+    public Pueblo getPueblo(int idPueblo) {
         return pueblos.get(idPueblo);
     }
     
@@ -73,21 +73,18 @@ public class Mapa {
 		return this.matrizAdyacencias;
 	}	
 	
-	public int getCostoMinimoTotal() {
-		int costoMinimoTotal=0;
-		if(caminoMenorCosto!=null)
-			costoMinimoTotal=Mapa.obtenerInstancia().getCaminoMenorCosto().get(Mapa.obtenerInstancia().getCaminoMenorCosto().size()-1)[1];
-		return costoMinimoTotal;  //devuelve km
+	public int getCostoMinimoTotal() {		
+		return this.costoTotal;  //devuelve km
 	}
 	
-	public ArrayList<int[]> getCaminoMenorCosto(){		
+	public ArrayList<Integer> getCaminoMenorCosto(){		
 		if(caminoMenorCosto != null) 
 			return this.caminoMenorCosto;			
-		this.caminoMenorCosto = calculaCaminoMasCorto();
+		calculaCaminoMasCorto();
 		return this.caminoMenorCosto;		
 	}
 	
-	public ArrayList<int[]> calculaCaminoMasCorto() {//devuelve lista de pueblos a visitar por el camino mas corto
+	public void calculaCaminoMasCorto() {//calcula lista de pueblos a visitar por el camino mas corto
 		
 		int[]costosMin = new int[this.matrizAdyacencias.length];  
 		int[]pred = new int[this.matrizAdyacencias.length];  
@@ -95,19 +92,20 @@ public class Mapa {
 		Dijkstra dijkstra= new Dijkstra();
 		dijkstra.algoritmoDijkstra(this.matrizAdyacencias, this.puebloInicial, costosMin, pred);
 		
+		this.costoTotal=costosMin[puebloFinal];
 		caminoMenorCosto = new ArrayList<>();
 		
 		if(costosMin[puebloFinal]!=Integer.MAX_VALUE) {
-			caminoMenorCosto.add(new int[]{this.puebloFinal,costosMin[this.puebloFinal]});
+			caminoMenorCosto.add(this.puebloFinal);
 			anterior=pred[this.puebloFinal];
 			do {
-				caminoMenorCosto.add(new int[]{anterior,costosMin[anterior]});
+				caminoMenorCosto.add(anterior);
 				anterior=pred[anterior];
 			} while(anterior!=this.puebloInicial);
 			Collections.reverse(caminoMenorCosto);//invierto la lista para que el camino quede en el orden correcto
-			return caminoMenorCosto;
 		}
-		return null; //no hay camino
+		else
+			this.caminoMenorCosto=null; //no hay camino
 		
 	
 	}

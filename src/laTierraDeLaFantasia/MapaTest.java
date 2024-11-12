@@ -10,7 +10,7 @@ public class MapaTest {
 
     @BeforeEach
     public void setUp() {
-        mapa = Mapa.obtenerInstancia();
+        mapa = Mapa.getInstancia();
         mapa.setCantidadPueblos(4);
         mapa.setPuebloInicial(1);
         mapa.setPuebloFinal(4);
@@ -34,13 +34,13 @@ public class MapaTest {
 
     @Test
     public void testAgregarPueblo() {
-        Pueblo pueblo1 = mapa.obtenerPueblo(1);
+        Pueblo pueblo1 = mapa.getPueblo(1);
         assertEquals(1, pueblo1.getId(), "El ID del pueblo 1 no es el esperado.");
         assertEquals(100, pueblo1.getHabitantes(), "El número de habitantes del pueblo 1 no es el esperado.");
         assertEquals(Raza.wrives, pueblo1.getRaza(), "La raza del pueblo 1 no es la esperada.");
         assertEquals(TipoPueblo.propio, pueblo1.getTipo(), "El tipo del pueblo 1 no es el esperado.");
 
-        Pueblo pueblo2 = mapa.obtenerPueblo(2);
+        Pueblo pueblo2 = mapa.getPueblo(2);
         assertEquals(2, pueblo2.getId(), "El ID del pueblo 2 no es el esperado.");
         assertEquals(30, pueblo2.getHabitantes(), "El número de habitantes del pueblo 2 no es el esperado.");
         assertEquals(Raza.reralopes, pueblo2.getRaza(), "La raza del pueblo 2 no es la esperada.");
@@ -70,12 +70,12 @@ public class MapaTest {
         mapa.agregarCamino(1, 4, 50); // Camino directo muy costoso de 1 a 4
 
         // Calcular el camino más corto
-        var caminoMasCorto = mapa.calculaCaminoMasCorto();
-        assertNotNull(caminoMasCorto, "El camino más corto no debería ser nulo.");
+        mapa.calculaCaminoMasCorto();
+        assertNotNull(mapa.getCaminoMenorCosto(), "El camino más corto no debería ser nulo.");
         
         // Verificar que el camino más corto sigue el orden correcto desde el pueblo inicial (1) hasta el pueblo final (4)
-        assertEquals(3, caminoMasCorto.get(0)[0], "El primer pueblo en el camino más corto no es el esperado.");
-        assertEquals(4, caminoMasCorto.get(1)[0], "El segundo pueblo en el camino más corto no es el esperado.");
+        assertEquals(3, mapa.getCaminoMenorCosto().get(0), "El primer pueblo en el camino más corto no es el esperado.");
+        assertEquals(4, mapa.getCaminoMenorCosto().get(1), "El segundo pueblo en el camino más corto no es el esperado.");
     }
 }
 

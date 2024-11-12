@@ -4,7 +4,7 @@ public class Nortaichian extends Guerrero{
     int enfurecido = 0;
 	int turnosPiedra=0;
 	public Nortaichian() {
-		super("Nortaichian",66, "arco", 16, 22, 18);
+		super(Raza.nortaichian,66, "arco", 16, 22, 18);
 	}
 
 	@Override

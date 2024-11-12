@@ -4,7 +4,6 @@ public class CampoDeBatalla{
 	public static int batalla(Ejercito aliado, Ejercito enemigo) {
 		boolean turnoAliado = true;
 		
-		
 		while(aliado.estaVivo() && enemigo.estaVivo()) {
 			
 			if(turnoAliado) {

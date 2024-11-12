@@ -2,7 +2,7 @@ package laTierraDeLaFantasia;
 public class Radaiteran extends Guerrero{
 	int cantAtaques = 0;
 	public Radaiteran() {
-		super("Radaiteran",36,"shuriken", 17, 41, 56);
+		super(Raza.radaiteran,36,"shuriken", 17, 41, 56);
 	}
 
 	@Override

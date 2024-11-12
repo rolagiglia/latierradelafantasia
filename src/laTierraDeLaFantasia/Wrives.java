@@ -3,7 +3,7 @@ public class Wrives extends Guerrero{
 	int contadorAtaques = 0;
 	boolean ataqueRecibido = false;
 	public Wrives() {
-		super("Wrives",108, "magia", 14, 28, 113);
+		super(Raza.wrives,108, "magia", 14, 28, 113);
 	}
 
 	@Override

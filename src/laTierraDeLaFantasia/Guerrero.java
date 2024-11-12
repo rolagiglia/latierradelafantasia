@@ -1,7 +1,7 @@
 package laTierraDeLaFantasia;
 public abstract class Guerrero implements Combatible{
 	
-	String raza;
+	Raza raza;
 	int saludMaxima;
 	int salud;
 	String arma;
@@ -9,7 +9,7 @@ public abstract class Guerrero implements Combatible{
 	int rangoMax;
 	int daño;
 	
-	public Guerrero(String raza, int saludMaxima, String arma, int rangoMin, int rangoMax, int daño) {
+	public Guerrero(Raza raza, int saludMaxima, String arma, int rangoMin, int rangoMax, int daño) {
 		this.raza = raza;
 		this.saludMaxima = saludMaxima;
 		this.salud = saludMaxima;
@@ -19,7 +19,7 @@ public abstract class Guerrero implements Combatible{
 		this.daño = daño;
 	}
 	
-	public String getRaza() {
+	public Raza getRaza() {
 		return raza;
 	}	
 	
