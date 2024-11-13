@@ -3,7 +3,7 @@ package laTierraDeLaFantasia;
 public class Dijkstra {  //O(n^2)
 	int[] costosMin;
 	int[] Predecesores;
-	int flag=0;
+	
 	public void algoritmoDijkstra(int[][] matrizAdy, int nodoInicial,int[]costosMin,int[]pred) {
 				   			 
 		boolean [] vectorS = new boolean[matrizAdy.length];         //vector nodos visitados

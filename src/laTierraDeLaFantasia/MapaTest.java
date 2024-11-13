@@ -77,5 +77,18 @@ public class MapaTest {
         assertEquals(3, mapa.getCaminoMenorCosto().get(0), "El primer pueblo en el camino más corto no es el esperado.");
         assertEquals(4, mapa.getCaminoMenorCosto().get(1), "El segundo pueblo en el camino más corto no es el esperado.");
     }
+    
+    @Test
+    public void testBorrarMapa() {
+        // Llamamos al método para borrar el mapa
+        mapa.borrarMapa();
+
+        // Verificamos que costoTotal se haya reiniciado a 0
+        assertEquals(0, mapa.getCostoMinimoTotal(), "El costo total no fue reiniciado a 0.");
+
+        // Verificamos que el caminoMenorCosto se haya reiniciado a null
+        assertNull(mapa.getCaminoMenorCosto(), "El camino menor costo no fue reiniciado a null.");
+
+    }
 }
 

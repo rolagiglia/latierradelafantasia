@@ -24,7 +24,7 @@ public class Interfaz {
 				System.out.println("");
 				break;
 			case 2:
-				mostrarMapa();
+				mostrarCamino();
 				System.out.println("");
 				break;			
 			case 3:
@@ -51,12 +51,14 @@ public class Interfaz {
 				System.out.println("Operacion cancelada. No se sobrescribio el mapa.");
 				return;
 			}
+			Mapa.getInstancia().borrarMapa();
 		}
 
 		System.out.print("Ingrese la ruta del archivo de mapa: ");
 		String rutaArchivo = scanner.nextLine();
 		
 		try {
+		
 		leerArchivo.cargarDatosMapa(rutaArchivo);
 		
 		System.out.println("Archivo cargado exitosamente.");
@@ -67,7 +69,7 @@ public class Interfaz {
 		
 	}
 	
-	private void mostrarMapa() {
+	private void mostrarCamino() {
 		if(mapaEstaVacio())
 			System.out.println("AUN NO SE HA CARGADO UN ARCHIVO DE MAPA");
 		else
@@ -98,7 +100,7 @@ public class Interfaz {
 							"\nTiempo total: " + (Mapa.getInstancia().getCostoMinimoTotal()/10+ cruzada.getTiempoTotal()) + " dias " + 
 							                    (Mapa.getInstancia().getCostoMinimoTotal()%10)*2.4 + " horas ");
 				else
-					System.out.println("LA MISION NO ES FACTIBLE");
+					System.out.println("EJERCITO PROPIO DERROTADO. LA MISION NO ES FACTIBLE");
 				
 			}
 			else 

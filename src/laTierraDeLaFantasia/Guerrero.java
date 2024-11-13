@@ -1,13 +1,13 @@
 package laTierraDeLaFantasia;
 public abstract class Guerrero implements Combatible{
 	
-	Raza raza;
-	int saludMaxima;
-	int salud;
-	String arma;
-	int rangoMin;
-	int rangoMax;
-	int daño;
+	protected Raza raza;
+	protected int saludMaxima;
+	protected int salud;
+	protected String arma;
+	protected int rangoMin;
+	protected int rangoMax;
+	protected int daño;
 	
 	public Guerrero(Raza raza, int saludMaxima, String arma, int rangoMin, int rangoMax, int daño) {
 		this.raza = raza;

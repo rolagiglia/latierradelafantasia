@@ -24,7 +24,13 @@ public class Mapa {
         }
         return mapaUnico;
     }
-
+    
+    public void borrarMapa() {
+    	costoTotal=0;
+    	caminoMenorCosto=null;
+    	pueblos.clear();
+ 
+    }
     public void setCantidadPueblos(int cantidadPueblos) {
         this.cantidadPueblos = cantidadPueblos;
         this.matrizAdyacencias = new int[cantidadPueblos+1][cantidadPueblos+1];
