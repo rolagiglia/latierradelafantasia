@@ -92,7 +92,11 @@ public class Interfaz {
 			if(Mapa.getInstancia().getCaminoMenorCosto()!=null) {
 				System.out.println("Existe un camino de " + 
 									Mapa.getInstancia().getPuebloInicial() + " a " +
-									Mapa.getInstancia().getPuebloFinal() + "\n, realizando mision....");
+									Mapa.getInstancia().getPuebloFinal());
+				System.out.print("Camino: "+" " + Mapa.getInstancia().getPuebloInicial() + " ");
+				for(int puebloAVisitar:Mapa.getInstancia().getCaminoMenorCosto())
+					System.out.print(puebloAVisitar +" ");
+				System.out.println("\n Realizando mision....");
 				Cruzada cruzada =  new Cruzada();
 				if(cruzada.cruzada()!=0)
 					System.out.println("MISION EXITOSA. \n"

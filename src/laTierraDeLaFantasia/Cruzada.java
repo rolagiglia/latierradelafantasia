@@ -15,25 +15,27 @@ public class Cruzada {
 	public int cruzada() {
 		
 	tiempoTotal = 0;
+	Mapa mapa = Mapa.getInstancia();
 	
 	Ejercito ejercitoAliado = new Ejercito(
-		Mapa.getInstancia().getPueblo(Mapa.getInstancia().getPuebloInicial()).getHabitantes(), 
-		Mapa.getInstancia().getPueblo(Mapa.getInstancia().getPuebloInicial()).getRaza());
+		mapa.getPueblo(mapa.getPuebloInicial()).getHabitantes(), 
+		mapa.getPueblo(mapa.getPuebloInicial()).getRaza());
 		
-	for(int puebloAVisitar:Mapa.getInstancia().getCaminoMenorCosto())
+	for(int puebloAVisitar:mapa.getCaminoMenorCosto())
 	{	
-		if(puebloAVisitar!=Mapa.getInstancia().getPuebloInicial()) //si no es mi pueblo
+		if(puebloAVisitar!=mapa.getPuebloInicial()) //verifico que no sea el pueblo de origen
 		{
-			if(Mapa.getInstancia().getPueblo(puebloAVisitar).getTipo()==TipoPueblo.aliado)
+			if(mapa.getPueblo(puebloAVisitar).getTipo()==TipoPueblo.aliado)
 			{		
 				ejercitoAliado.descansar();
 				tiempoTotal+=1;
-				ejercitoAliado.agregarGuerreros(Mapa.getInstancia().getPueblo(puebloAVisitar).getHabitantes()/2, Mapa.getInstancia().getPueblo(puebloAVisitar).getRaza());
+				ejercitoAliado.agregarGuerreros(mapa.getPueblo(puebloAVisitar).getHabitantes()/2, 
+													mapa.getPueblo(puebloAVisitar).getRaza());
 			}
 			else {
 				Ejercito ejercitoEnemigo = new Ejercito(
-						Mapa.getInstancia().getPueblo(puebloAVisitar).getHabitantes(), 
-						Mapa.getInstancia().getPueblo(puebloAVisitar).getRaza());	
+						mapa.getPueblo(puebloAVisitar).getHabitantes(), 
+						mapa.getPueblo(puebloAVisitar).getRaza());	
 				
 				tiempoTotal+=1;
 				if(CampoDeBatalla.batalla(ejercitoAliado, ejercitoEnemigo)==0)
